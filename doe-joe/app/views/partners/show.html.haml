@@ -1,0 +1,42 @@
+%h1
+	%strong Name : 
+	= @partner.name
+%p.form-control
+	%strong Email : 
+	= @partner.email
+%p.form-control
+	%strong Remarks :
+	= @partner.remarks
+%p.form-control
+	%strong Curriculum
+	= @partner.curriculum
+
+#locations
+	%h3 Locations
+	- @partner.locations.each do |l|
+		%p
+			%strong Area : 
+			= l.area
+		%p
+			%strong Coordinator Name :
+			= l.coordinatorname
+		%p
+			%strong Contact :
+			= l.contact
+		%p
+			%strong Address :
+			= l.address
+		- l.timeslots.each do |ts|
+			%h3 Time Slots
+			%p
+				%strong Day : 
+				= ts.day
+			%p
+				%strong Start :
+				= ts.start.strftime("%H:%M")
+			%p
+				%strong End :
+				= ts.end.strftime("%H:%M")
+			%p
+				%strong Number Of Seats Available :
+				= ts.noofseats

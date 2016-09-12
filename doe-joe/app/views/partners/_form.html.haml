@@ -1,0 +1,24 @@
+= simple_form_for @partner, html: {multipart: true} do |f|
+  - if @partner.errors.any?
+    #errors
+      %p
+        = @partner.errors.count
+        Errors prevented this partner from saving
+      %ul
+        - @partner.errors.full_messages.each do |msg|
+          %li= msg
+  .panel_body
+    = f.input :name, input_html: {class: 'form-control' }
+    = f.input :email, input_html: {class: 'form-control' }
+    = f.input :remarks, input_html: {class: 'form-control' }
+    = f.input :curriculum, input_html: {class: 'form-control' }
+
+    .row
+      .col-md-12
+        %h3 Location
+        #locations
+          = f.simple_fields_for :locations do |location|
+            = render 'location_fields', f: location
+          .links
+            = link_to_add_association 'Add Location', f, :locations, class: 'btn btn-default add-button'
+  = f.button :submit, class: 'btn btn-primary'

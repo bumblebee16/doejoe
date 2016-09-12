@@ -1,0 +1,7 @@
+.form-inline.clearfix
+	.nested-fields
+		=f.label :day
+		=f.select :day, options_for_select([["Select One", ""], "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]), input_html: {class: 'form-input form-control'}
+		=f.input :start, input_html: {class: 'form-input form control'}
+		=f.input :end, input_html: {class: 'form-input form control'}
+		=f.input :noofseats, input_html: {class: 'form-input form control'}
